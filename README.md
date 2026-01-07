@@ -11,7 +11,7 @@ Benie como ODM compatível com o Pydantic
 <h2>A API implementa</h2>
 Consultas Requeridas: A API deve implementar consultas diversificadas e úteis ao contexto escolhido.
 
-a) Consultas por ID
+a) Consultas por ID /n
 b) Listagens filtradas por relacionamentos
 c) Buscas por texto parcial e case-insensitive.
 d) Filtros por data/ano utilizando consultas baseadas em operadores do MongoDB
