@@ -32,3 +32,11 @@ uv init
 uv python pin 3.13
 uv add fastapi uvicorn "motor[srv]" beanie pydantic-settings
 ```
+
+Lê o seu arquivo pyproject.toml, consulta uv.lock e instala o que está faltando na sua .venv:
+
+```bash
+uv sync
+uv venv
+source .venv/bin/activate
+```
