@@ -25,3 +25,10 @@ g) Consultas complexas envolvendo múltiplas coleções
 
 <h3>Preparando seu projeto python 3.13</h3>
 Repare que para esse projeto usamos UV como gerenciador de pacotes.
+Iniciar o projeto, fixar a versão python e instalação de dependências:
+
+```bash
+uv init
+uv python pin 3.13
+uv add fastapi uvicorn "motor[srv]" beanie pydantic-settings
+```
