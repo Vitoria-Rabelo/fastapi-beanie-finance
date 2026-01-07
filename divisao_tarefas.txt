@@ -1,4 +1,5 @@
 Vitoria Rabelo Santiago - 566462
+- Configuração de ambiente, instalação de dependencias, criação do repositório, git ignore.
 
 Kaio da Silva Pereira - 564892
 
