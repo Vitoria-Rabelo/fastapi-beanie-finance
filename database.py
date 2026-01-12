@@ -1,16 +1,24 @@
-from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import AsyncMongoClient
 from beanie import init_beanie
-from models.user import User
-from models.category import Category
-from models.transaction import Transaction
-from models.account import Account
+from dotenv import load_dotenv
+from models import User, Account, Category, Transaction 
+import os
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+
+
 
 async def init_db():
-    
-    client = AsyncIOMotorClient("mongodb://localhost:27017")
+    load_dotenv()
+    db = os.getenv("DATABASE_URL")
+    client = AsyncMongoClient(db)
     
     # Inicializa o Beanie com os modelos
     await init_beanie(
         database=client.db_financeiro,
         document_models=[User, Category, Transaction, Account]
     )
+    #  await init_beanie(database=client.dbTeste, document_models=[Produto,Fornecedor,ProdutoFornecedor])

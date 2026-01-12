@@ -1,5 +1,6 @@
 Vitoria Rabelo Santiago - 566462
-- Configuração de ambiente, instalação de dependencias, criação do repositório, git ignore.
+- Configuração de ambiente, instalação de dependencias, criação do repositório, gitignore.
+- Desenvolvimento dos arquivos: database.py, models.py,
 
 Kaio da Silva Pereira - 564892
 
