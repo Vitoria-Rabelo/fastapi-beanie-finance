@@ -1,15 +1,1 @@
-.venv/
-venv/
-env/
-.env
-
-__pycache__/
-*.py[cod]
-**__pycache__/
-*.py[codz]
-
-.vscode/
-
-.DS_Store
-
-*.log
+*
