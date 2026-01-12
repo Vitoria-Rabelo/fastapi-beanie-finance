@@ -1,1 +1,19 @@
-*
+# Ambientes Virtuais
+.venv/
+venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.pyc
+
+# Configurações do VisualStudio Code
+.vscode/
+.idea/
+
+# Variáveis de Ambiente (SENSÍVEL - NUNCA ENVIE)
+.env
+
+# Logs e arquivos de sistema
+*.log
+.DS_Store
