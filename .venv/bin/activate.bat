@@ -26,7 +26,7 @@
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-@for %%i in ("/Users/vitoriarabelo/Desktop/tp3/fastapi-beanie-finance/.venv") do @set "VIRTUAL_ENV=%%~fi"
+@for %%i in ("/home/kaio/Documentos/code/trabalho/fastapi-beanie-finance/.venv") do @set "VIRTUAL_ENV=%%~fi"
 
 @set "VIRTUAL_ENV_PROMPT=fastapi-beanie-finance"
 @if NOT DEFINED VIRTUAL_ENV_PROMPT (

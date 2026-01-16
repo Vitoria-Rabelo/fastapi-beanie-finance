@@ -3,5 +3,10 @@ Vitoria Rabelo Santiago - 566462
 - Desenvolvimento dos arquivos: database.py, models.py,
 
 Kaio da Silva Pereira - 564892
+- Implementação do módulo de Endpoints
+- Desenvolvimento do CRUD completo para todas as entidades.
+- Implementação de consultas complexas exigidas: busca textual (Regex), 
+filtros temporais (Date Range com operadores GTE/LTE) e paginação (skip/limit).
+- Desenvolvimento de rotas de agregação (/analytics) utilizando Aggregation Pipeline do MongoDB.
 
 Priscila da Silva Holanda - 568069

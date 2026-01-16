@@ -68,7 +68,7 @@ export-env {
         }
     }
 
-    let virtual_env = '/Users/vitoriarabelo/Desktop/tp3/fastapi-beanie-finance/.venv'
+    let virtual_env = '/home/kaio/Documentos/code/trabalho/fastapi-beanie-finance/.venv'
     let bin = 'bin'
     let path_name = if (has-env 'Path') { 'Path' } else { 'PATH' }
     let venv_path = ([$virtual_env $bin] | path join)

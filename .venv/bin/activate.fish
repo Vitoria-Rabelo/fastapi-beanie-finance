@@ -79,7 +79,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV '/Users/vitoriarabelo/Desktop/tp3/fastapi-beanie-finance/.venv'
+set -gx VIRTUAL_ENV '/home/kaio/Documentos/code/trabalho/fastapi-beanie-finance/.venv'
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
 if test (string sub -s 1 -l 1 $FISH_VERSION) -lt 3

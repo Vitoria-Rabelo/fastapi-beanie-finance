@@ -1,4 +1,4 @@
-#!/Users/vitoriarabelo/Desktop/tp3/fastapi-beanie-finance/.venv/bin/python3
+#!/home/kaio/Documentos/code/trabalho/fastapi-beanie-finance/.venv/bin/python
 # -*- coding: utf-8 -*-
 import sys
 from email_validator.__main__ import main
