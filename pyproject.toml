@@ -1,7 +1,7 @@
 [project]
 name = "fastapi-beanie-finance"
 version = "0.1.0"
-description = "Add your description here"
+description = "Aplicação Financeira de Controle de Gastos"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
