@@ -1,6 +1,8 @@
 Vitoria Rabelo Santiago - 566462
 - Configuração de ambiente, instalação de dependencias, criação do repositório, gitignore.
-- Desenvolvimento dos arquivos: database.py, models.py,
+- Desenvolvimento dos arquivos: database.py, main.py, models.py.
+- Organização da estrutura do projeto: modelos, rotas, .env e arquivos externos.
+- Gestão do Projeto: .python-version, uv.lock, pyproject.toml.
 
 Kaio da Silva Pereira - 564892
 - Implementação do módulo de Endpoints
