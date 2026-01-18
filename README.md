@@ -8,7 +8,7 @@ Suporte para MongoDB como banco de dados NoSQL
 UV como gerenciador de dependências
 Benie como ODM compatível com o Pydantic
 
-<h2>A API implementa</h2>
+## A API implementa
 Consultas Requeridas: A API deve implementar consultas diversificadas e úteis ao contexto escolhido.
 
 a) Consultas por ID
@@ -19,13 +19,56 @@ e) Agregações e contagens utilizando aggregation pipeline
 f) Classificações e ordenações
 g) Consultas complexas envolvendo múltiplas coleções
 
-<h3>Preparando ambiente Mongo</h3>
+## Preparando ambiente Mongo
 1) Instale o MongoDB Compass (GUI)
 2) Crie sua conta no MongoDB Atlas (versão gratuita que hospeda em nuvem)
 
-<h3>Preparando seu projeto python 3.13</h3>
+## Preparando seu projeto python 3.13
 Repare que para esse projeto usamos UV como gerenciador de pacotes.
 Iniciar o projeto, fixar a versão python e instalação de dependências:
+
+## Elaboração de diagramas utilizando o Mermaid 
+
+classDiagram
+    class User {
+        ObjectId _id
+        str nome
+        EmailStr email
+        str senha_hash
+        list(Category) categorias
+    }
+    
+    class Category {
+        ObjectId _id
+        str nome
+        Link(User) user
+    }
+    
+    class Account {
+        ObjectId _id
+        str nome
+        str tipo
+        float saldo_inicial
+        Link(User) usuario
+    }
+    
+    class Transaction {
+        ObjectId _id
+        str descricao
+        float valor
+        datetime data
+        str tipo
+        Link(Account) conta
+        Link(Category) categoria
+    }
+    
+    User "1" --> "*" Category : possui
+    User "1" --> "*" Account : possui
+    Account "1" --> "*" Transaction : contém
+    Category "1" --> "*" Transaction : classifica
+
+
+![alt text](image.png) #iamgem do diagrama
 
 ```bash
 uv init
@@ -40,3 +83,5 @@ uv sync
 uv venv
 source .venv/bin/activate
 ```
+
+

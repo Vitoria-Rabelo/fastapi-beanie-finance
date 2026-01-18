@@ -12,3 +12,9 @@ filtros temporais (Date Range com operadores GTE/LTE) e paginação (skip/limit)
 - Desenvolvimento de rotas de agregação (/analytics) utilizando Aggregation Pipeline do MongoDB.
 
 Priscila da Silva Holanda - 568069
+- População do banco MongoDB com dados realistas, garantindo no mínimo 10 documentos por coleção e a correta aplicação dos relacionamentos entre as entidades.
+- Criação e organização de scripts de seed/população do banco, assegurando que os dados permitam a execução correta das consultas e agregações exigidas pelo trabalho.
+- Elaboração e inclusão do diagrama de classes das entidades principais no arquivo README.md, utilizando o Mermaid.
+- Adição de docstrings nos endpoints para documentação da API.
+- Criação do arquivo divisao_tarefas.txt, detalhando a contribuição individual de cada integrante da equipe.
+- Realização de testes finais para validação do funcionamento da API com dados reais.

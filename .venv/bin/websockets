@@ -1,4 +1,4 @@
-#!/home/kaio/Documentos/code/trabalho/fastapi-beanie-finance/.venv/bin/python
+#!/home/priscila/fastapi-beanie-finance/.venv/bin/python
 # -*- coding: utf-8 -*-
 import sys
 from websockets.cli import main

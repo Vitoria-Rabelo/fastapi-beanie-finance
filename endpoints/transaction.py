@@ -19,6 +19,22 @@ class TransactionUpdate(BaseModel):
 
 @router.post("/", response_model=Transaction, status_code=status.HTTP_201_CREATED)
 async def create_transaction(trans_in: TransactionCreate):
+    """
+    Criar uma nova transação.
+    
+    **Parâmetros:**
+    - descricao: Descrição da transação (ex: Salário, Compra)
+    - valor: Valor da transação em reais
+    - data: Data da transação (opcional, usa data/hora atual se não informada)
+    - tipo: Tipo da transação (Entrada, Saída, Transferência)
+    - conta_id: ID da conta envolvida
+    - categoria_id: ID da categoria para classificação
+    
+    **Retorna:** Transação criada com ID gerado
+    
+    **Erros:**
+    - 404: Conta ou Categoria não encontradas
+    """
     account = await Account.get(trans_in.conta_id)
     category = await Category.get(trans_in.categoria_id)
     
@@ -32,8 +48,8 @@ async def create_transaction(trans_in: TransactionCreate):
         valor=trans_in.valor,
         data=dt,
         tipo=trans_in.tipo,
-        conta=account, # type: ignore
-        categoria=category # type: ignore
+        conta=account, 
+        categoria=category 
     )
     await new_trans.create()
     return new_trans
@@ -46,6 +62,22 @@ async def list_transactions(
     skip: int = 0,
     limit: int = 20
 ):
+    """
+    Listar transações com múltiplos filtros.
+    
+    **Parâmetros:**
+    - term: Buscar por descrição (case-insensitive, opcional)
+    - year: Filtrar por ano (opcional)
+    - min_value: Filtrar por valor mínimo (opcional)
+    - skip: Número de registros a pular (padrão: 0)
+    - limit: Quantidade de transações a retornar (padrão: 20)
+    
+    **Retorna:** Lista de transações filtradas e ordenadas por data (decrescente)
+    
+    **Exemplo:**
+    - GET /transactions/?year=2026&min_value=100
+    - GET /transactions/?term=salário&limit=10
+    """
     query = Transaction.find_all()
 
     if term:
@@ -63,6 +95,30 @@ async def list_transactions(
 
 @router.get("/analytics/summary")
 async def get_transaction_summary():
+    """
+    Obter resumo agregado de transações por tipo.
+    
+    **Retorna:**
+    - _id: Tipo de transação (Entrada, Saída, Transferência)
+    - total_valor: Soma total do valor das transações desse tipo
+    - count: Quantidade de transações desse tipo
+    
+    **Exemplo de resposta:**
+    ```json
+    [
+        {
+            "_id": "Entrada",
+            "total_valor": 5000.50,
+            "count": 2
+        },
+        {
+            "_id": "Saída",
+            "total_valor": 1500.00,
+            "count": 15
+        }
+    ]
+    ```
+    """
     pipeline = [
         {
             "$group": {
@@ -77,6 +133,17 @@ async def get_transaction_summary():
 
 @router.get("/{trans_id}", response_model=Transaction)
 async def get_transaction(trans_id: PydanticObjectId):
+    """
+    Obter uma transação específica pelo ID.
+    
+    **Parâmetros:**
+    - trans_id: ID da transação (ObjectId)
+    
+    **Retorna:** Dados completos da transação com links resolvidos
+    
+    **Erros:**
+    - 404: Transação não encontrada
+    """
     trans = await Transaction.get(trans_id, fetch_links=True)
     if not trans:
         raise HTTPException(status_code=404, detail="Transação não encontrada")
@@ -84,6 +151,21 @@ async def get_transaction(trans_id: PydanticObjectId):
 
 @router.patch("/{trans_id}", response_model=Transaction)
 async def update_transaction(trans_id: PydanticObjectId, trans_in: TransactionUpdate):
+    """
+    Atualizar dados de uma transação.
+    
+    **Parâmetros:**
+    - trans_id: ID da transação a atualizar
+    - descricao: Nova descrição (opcional)
+    - valor: Novo valor (opcional)
+    - data: Nova data (opcional)
+    - tipo: Novo tipo (opcional)
+    
+    **Retorna:** Transação atualizada
+    
+    **Erros:**
+    - 404: Transação não encontrada
+    """
     trans = await Transaction.get(trans_id)
     if not trans:
         raise HTTPException(status_code=404, detail="Transação não encontrada")
@@ -93,6 +175,17 @@ async def update_transaction(trans_id: PydanticObjectId, trans_in: TransactionUp
 
 @router.delete("/{trans_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_transaction(trans_id: PydanticObjectId):
+    """
+    Deletar uma transação.
+    
+    **Parâmetros:**
+    - trans_id: ID da transação a deletar
+    
+    **Retorna:** 204 No Content
+    
+    **Erros:**
+    - 404: Transação não encontrada
+    """
     trans = await Transaction.get(trans_id)
     if not trans:
         raise HTTPException(status_code=404, detail="Transação não encontrada")
