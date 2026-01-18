@@ -103,7 +103,7 @@ async def populate_database():
         await account.create()
         accounts.append(account)
     
-    print(f"✓ {len(accounts)} contas criadas")
+    print(f" {len(accounts)} contas criadas")
     
     # Cria transações
     transaction_types = ["Entrada", "Saída", "Transferência"]
@@ -152,15 +152,15 @@ async def populate_database():
         await transaction.create()
         transactions.append(transaction)
     
-    print(f"✓ {len(transactions)} transações criadas")
+    print(f" {len(transactions)} transações criadas")
     
     print("\n" + "="*50)
-    print("✓ BANCO DE DADOS POPULADO COM SUCESSO!")
+    print("BANCO DE DADOS POPULADO COM SUCESSO!")
     print("="*50)
-    print(f"  Usuários:      {len(users)}")
-    print(f"  Categorias:    {len(categories)}")
-    print(f"  Contas:        {len(accounts)}")
-    print(f"  Transações:    {len(transactions)}")
+    print(f" Usuários: {len(users)}")
+    print(f" Categorias: {len(categories)}")
+    print(f" Contas: {len(accounts)}")
+    print(f" Transações: {len(transactions)}")
     print("="*50)
 
 if __name__ == "__main__":

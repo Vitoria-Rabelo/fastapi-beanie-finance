@@ -81,7 +81,7 @@ async def seed_categories(users):
         user = users[i % len(users)]
         category = Category(
             nome=cat_name,
-            user=user  # type: ignore
+            user=user 
         )
         await category.create()
         categories.append(category)
