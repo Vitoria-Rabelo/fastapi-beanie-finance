@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, status
 from models import Category, CategoryCreate, User
 from beanie import PydanticObjectId
 from pydantic import BaseModel
+from beanie.operators import Push
 
 router = APIRouter()
 
@@ -12,24 +13,14 @@ class CategoryUpdate(BaseModel):
 
 @router.post("/", response_model=Category, status_code=status.HTTP_201_CREATED)
 async def create_category(cat_in: CategoryCreate):
-    """
-    Criar uma nova categoria.
-    
-    **Parâmetros:**
-    - nome: Nome da categoria (ex: Alimentação, Transporte)
-    - user_id: ID do usuário proprietário da categoria
-    
-    **Retorna:** Categoria criada com ID gerado
-    
-    **Erros:**
-    - 404: Usuário vinculado não encontrado
-    """
     user = await User.get(cat_in.user_id)
     if not user:
         raise HTTPException(status_code=404, detail="Usuário vinculado não encontrado")
     
     new_cat = Category(nome=cat_in.nome, user=user) # type: ignore
     await new_cat.create()
+    
+    await user.update(Push({User.categorias: new_cat})) 
 
     return new_cat
 
