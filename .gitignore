@@ -11,9 +11,6 @@ __pycache__/
 .vscode/
 .idea/
 
-# Variáveis de Ambiente (SENSÍVEL - NUNCA ENVIE)
-.env
-
 # Logs e arquivos de sistema
 *.log
 .DS_Store
