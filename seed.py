@@ -9,6 +9,7 @@ import argparse
 from datetime import datetime, timedelta
 from database import init_db
 from models import User, Category, Account, Transaction
+from beanie.operators import Push
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -85,7 +86,11 @@ async def seed_categories(users):
         )
         await category.create()
         categories.append(category)
-        print(f"{cat_name}")
+        
+        # Criar associação N:N: adicionar categoria à lista de categorias do usuário
+        await user.update(Push({User.categorias: category}))
+        
+        print(f" {cat_name}")
     
     print(f"\n {len(categories)} categorias criadas\n")
     return categories
