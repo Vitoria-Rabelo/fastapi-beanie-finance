@@ -68,7 +68,7 @@ classDiagram
     Category "1" --> "*" Transaction : classifica
 
 
-![alt text](image.png) #iamgem do diagrama
+![alt text](image.png) #imagem do diagrama
 
 ```bash
 uv init
